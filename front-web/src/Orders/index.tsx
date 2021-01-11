@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
-import { toast } from 'react-toastify';
 import './styles.css'
 import StepsHeader from './StepsHeader'
 import ProductList from './ProductList'
 import { OrderLocationdata, Product } from './types'
-import { fetchProducts, saveOrder } from '../api';
+import { fetchProducts } from '../api';
 import OrderLocation from './OrderLocation'
 import OrderSummary from './OrderSummary'
 import Footer from '../Footer'
@@ -37,22 +36,7 @@ function Orders() {
       }
 
     // ****** END HANDLE SELECT
-
-    const handleSubmit = () => {
-      const productsIds = selectedProducts.map(({ id }) => ({ id }));
-      const payload = {
-        ...orderLocation!,
-        products: productsIds
-      }
     
-      saveOrder(payload).then(() => {
-        toast.error('Pedido enviado com sucesso!');
-        setSelectedProducts([]);
-      })
-        .catch(() => {
-          toast.warning('Erro ao enviar pedido');
-        })
-    }
       
     return (
         <>
@@ -65,9 +49,8 @@ function Orders() {
             />
             <OrderLocation onChangeLocation={location => setOrderLocation(location)}/>
             <OrderSummary 
-              amount={selectedProducts.length} 
-              totalPrice={totalPrice} 
-              onSubmit={handleSubmit}
+              // amount={selectedProducts.length} 
+              // totalPrice={totalPrice} 
               />
         </div>
         <Footer />
