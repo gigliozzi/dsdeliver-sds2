@@ -5,6 +5,8 @@ import ProductList from './ProductList'
 import { OrderLocationdata, Product } from './types'
 import { fetchProducts } from '../api';
 import OrderLocation from './OrderLocation'
+import OrderSummary from './OrderSummary'
+import Footer from '../Footer'
 
 function Orders() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -17,12 +19,15 @@ function Orders() {
     }, []);
 
     return (
+        <>
         <div className="orders-container">
             <StepsHeader />
             <ProductList products={products} />
             <OrderLocation onChangeLocation={location => setOrderLocation(location)}/>
+            <OrderSummary />
         </div>
-        
+        <Footer />
+        </>
     )
 }
 
