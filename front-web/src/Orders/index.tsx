@@ -48,10 +48,14 @@ function Orders() {
                 selectedProducts={selectedProducts}
             />
            <OrderLocation onChangeLocation={location => setOrderLocation(location)}/> 
+            
             <OrderSummary 
-              // amount={selectedProducts.length} 
-              // totalPrice={totalPrice} 
-              />
+            amount={selectedProducts.length}
+            totalPrice={totalPrice}
+            onSubmit={Boolean}
+            
+            />
+            
         </div>
         <Footer />
         </>
