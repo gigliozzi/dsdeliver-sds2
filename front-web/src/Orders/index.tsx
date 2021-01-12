@@ -12,7 +12,7 @@ import { checkIsSelected } from './helpers'
 function Orders() {
     const [products, setProducts] = useState<Product[]>([]);
     const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
-    const [orderLocation, setOrderLocation] = useState<OrderLocationdata>();
+    const [, setOrderLocation] = useState<OrderLocationdata>();
     const totalPrice = selectedProducts.reduce((sum, item) => {
       return sum + item.price;
     }, 0);
